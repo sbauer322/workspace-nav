@@ -1,0 +1,3 @@
+.workspace p.nav-selected-focused {background: var(result-bg); }
+
+.workspace p.nav-selected-unfocused {background: var(dark-highlight-bg); }

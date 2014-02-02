@@ -1,0 +1,8 @@
+{:+ {:app [(:lt.objs.plugins/load-js "workspace_nav_compiled.js" true)
+           (:lt.objs.plugins/load-keymap "workspace_nav.keymap")
+           (:lt.objs.plugins/load-css "css/workspace_nav.css")]
+
+     :sidebar.workspace [:lt.plugins.workspace-nav/on-show-setup-and-focus
+                         :lt.plugins.workspace-nav/on-blur-context-out
+                         :lt.plugins.workspace-nav/on-focus-be-interactive]}}
+

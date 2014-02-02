@@ -1,0 +1,13 @@
+{:+ {:workspace.focused { ; Some mappings to make NerdTree users (like me) happy
+                          "o" [:lt.plugins.workspace-nav/open-selection]
+                          "x" [:lt.plugins.workspace-nav/close-parent]
+                          "j" [:lt.plugins.workspace-nav/navigate-south]
+                          "k" [:lt.plugins.workspace-nav/navigate-north]
+                          ", d" [:workspace.show]
+
+                          ; Probably what most people would *expect*
+                          "enter" [:lt.plugins.workspace-nav/open-selection]
+                          "backspace" [:lt.plugins.workspace-nav/close-parent]
+                          "up" [:lt.plugins.workspace-nav/navigate-north]
+                          "down" [:lt.plugins.workspace-nav/navigate-south]
+                          "esc" [:workspace.show]}}}
