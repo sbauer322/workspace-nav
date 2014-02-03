@@ -19,7 +19,7 @@
       (do
         (dom/on (object/->content workspace) :focus (fn [] (object/raise workspace :focus)))
         (dom/on (object/->content workspace) :blur (fn [] (object/raise workspace :blur)))
-        (object/merge! workspace {::focusable-workspace true})))))
+        (object/merge! workspace {::focusable-workspace true, ::selected (first (:folders @workspace))})))))
 
 (object/tags->behaviors #{:sidebar.workspace})
 
@@ -27,6 +27,7 @@
           :triggers #{:show}
           :reaction (fn [workspace]
                       (setup-focusable workspace)
+                      (scroll-to-tree-item (::selected @workspace))
                       (dom/focus (object/->content workspace))))
 
 (defn set-selected-class [tree-item css-class]
@@ -109,8 +110,10 @@
         parent))))
 
 (defn scroll-to-tree-item [tree-item]
-  (goog.style/scrollIntoContainerView (dom/$ :p (object/->content tree-item))
-                                      (dom/$ :ul.root (object/->content workspace/sidebar-workspace))))
+  (let [workspace-container (dom/$ :ul.root (object/->content workspace/sidebar-workspace))]
+    (goog.style/scrollIntoContainerView (dom/$ :p (object/->content tree-item))
+                                        (dom/$ :ul.root (object/->content workspace/sidebar-workspace)))
+    (aset workspace-container "scrollLeft" 0)))
 
 (defn select-new-sibling [sibling-finder]
   (object/update! workspace/sidebar-workspace [::selected]
