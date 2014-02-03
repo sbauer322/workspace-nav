@@ -4,10 +4,14 @@
                           "j" [:lt.plugins.workspace-nav/navigate-south]
                           "k" [:lt.plugins.workspace-nav/navigate-north]
                           ", d" [:workspace.show]
+                          "G" [:lt.plugins.workspace-nav/navigate-bottom]
+                          "g g" [:lt.plugins.workspace-nav/navigate-top]
 
                           ; Probably what most people would *expect*
                           "enter" [:lt.plugins.workspace-nav/open-selection]
                           "backspace" [:lt.plugins.workspace-nav/close-parent]
                           "up" [:lt.plugins.workspace-nav/navigate-north]
                           "down" [:lt.plugins.workspace-nav/navigate-south]
-                          "esc" [:workspace.show]}}}
+                          "esc" [:workspace.show]
+                          "end" [:lt.plugins.workspace-nav/navigate-bottom]
+                          "home" [:lt.plugins.workspace-nav/navigate-top]}}}

@@ -87,6 +87,9 @@
     (or (next-sibling tree-item)
         (recur (parent tree-item)))))
 
+(defn first-tree-item []
+  (first (children workspace/tree)))
+
 (defn next-tree-item [tree-item]
   (if (:open? @tree-item)
     (or (first (children tree-item)) (next-sibling-or-parent-sibling tree-item))
@@ -120,15 +123,25 @@
                         new-selection)
                       selected))))
 
-(cmd/command {:command ::navigate-south
-              :desc "Workspace nav: navigate down"
+(cmd/command {:command ::navigate-top
+              :desc "Workspace nav: Jump to the top of the workspace tree"
               :exec (fn []
-                      (select-new-sibling next-tree-item))})
+                      (select-new-sibling #(first-tree-item)))})
 
 (cmd/command {:command ::navigate-north
               :desc "Workspace nav: navigate up"
               :exec (fn []
                       (select-new-sibling prev-tree-item))})
+
+(cmd/command {:command ::navigate-south
+              :desc "Workspace nav: navigate down"
+              :exec (fn []
+                      (select-new-sibling next-tree-item))})
+
+(cmd/command {:command ::navigate-bottom
+              :desc "Workspace nav: Jump to the bottom of the workspace tree"
+              :exec (fn []
+                      (select-new-sibling #(deepest-last-child workspace/tree)))})
 
 (cmd/command {:command ::open-selection
              :desc "Workspace nav: Open selected tree item"
