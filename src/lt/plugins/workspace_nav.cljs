@@ -53,6 +53,11 @@
                       (set-selected-class (selected-tree) "nav-selected-unfocused")
                       (ctx/out! :workspace.focused)))
 
+(behavior ::on-clicked-select
+          :triggers #{:open! :close!}
+          :reaction (fn [tree-item]
+                      (select-new-sibling (fn [_] tree-item))))
+
 (defn children [parent]
   (concat
    (sort-by #(-> @% :path files/basename clojure.string/lower-case) (:folders @parent))

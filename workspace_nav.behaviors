@@ -4,5 +4,6 @@
 
      :sidebar.workspace [:lt.plugins.workspace-nav/on-show-setup-and-focus
                          :lt.plugins.workspace-nav/on-blur-context-out
-                         :lt.plugins.workspace-nav/on-focus-be-interactive]}}
+                         :lt.plugins.workspace-nav/on-focus-be-interactive]
+     :tree-item [:lt.plugins.workspace-nav/on-clicked-select]}}
 
