@@ -105,6 +105,10 @@
         tree-item
         parent))))
 
+(defn scroll-to-tree-item [tree-item]
+  (goog.style/scrollIntoContainerView (dom/$ :p (object/->content tree-item))
+                                      (dom/$ :ul.root (object/->content workspace/sidebar-workspace))))
+
 (defn select-new-sibling [sibling-finder]
   (object/update! workspace/sidebar-workspace [::selected]
                   (fn [selected]
@@ -112,6 +116,7 @@
                       (do
                         (set-selected-class selected "")
                         (set-selected-class new-selection "nav-selected-focused")
+                        (scroll-to-tree-item new-selection)
                         new-selection)
                       selected))))
 
