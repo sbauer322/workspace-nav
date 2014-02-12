@@ -21,13 +21,10 @@
         (dom/on (object/->content workspace) :blur (fn [] (object/raise workspace :blur)))
         (object/merge! workspace {::focusable-workspace true, ::selected (first (:folders @workspace))})))))
 
-(object/tags->behaviors #{:sidebar.workspace})
-
 (behavior ::on-show-setup-and-focus
           :triggers #{:show}
           :reaction (fn [workspace]
                       (setup-focusable workspace)
-                      (scroll-to-tree-item (::selected @workspace))
                       (dom/focus (object/->content workspace))))
 
 (defn set-selected-class [tree-item css-class]
@@ -46,6 +43,7 @@
                                           (if (and selected @selected)
                                             selected
                                             (first (:folders @tree)))))
+                        (scroll-to-tree-item (::selected @workspace))
                         (set-selected-class (::selected @workspace) "nav-selected-focused"))))
 
 (behavior ::on-blur-context-out
@@ -57,7 +55,7 @@
 (behavior ::on-clicked-select
           :triggers #{:open! :close!}
           :reaction (fn [tree-item]
-                      (select-new-sibling (fn [_] tree-item))))
+                      (select-tree-item tree-item)))
 
 (defn children [parent]
   (concat
@@ -112,13 +110,13 @@
 (defn scroll-to-tree-item [tree-item]
   (let [workspace-container (dom/$ :ul.root (object/->content workspace/sidebar-workspace))]
     (goog.style/scrollIntoContainerView (dom/$ :p (object/->content tree-item))
-                                        (dom/$ :ul.root (object/->content workspace/sidebar-workspace)))
+                                        workspace-container)
     (aset workspace-container "scrollLeft" 0)))
 
-(defn select-new-sibling [sibling-finder]
+(defn select-tree-item [new-selection]
   (object/update! workspace/sidebar-workspace [::selected]
                   (fn [selected]
-                    (if-let [new-selection (sibling-finder selected)]
+                    (if-not (= selected new-selection)
                       (do
                         (set-selected-class selected "")
                         (set-selected-class new-selection "nav-selected-focused")
@@ -129,22 +127,22 @@
 (cmd/command {:command ::navigate-top
               :desc "Workspace nav: Jump to the top of the workspace tree"
               :exec (fn []
-                      (select-new-sibling #(first-tree-item)))})
+                      (select-tree-item (first-tree-item)))})
 
 (cmd/command {:command ::navigate-north
               :desc "Workspace nav: navigate up"
               :exec (fn []
-                      (select-new-sibling prev-tree-item))})
+                      (select-tree-item (prev-tree-item (selected-tree))))})
 
 (cmd/command {:command ::navigate-south
               :desc "Workspace nav: navigate down"
               :exec (fn []
-                      (select-new-sibling next-tree-item))})
+                      (select-tree-item (next-tree-item (selected-tree))))})
 
 (cmd/command {:command ::navigate-bottom
               :desc "Workspace nav: Jump to the bottom of the workspace tree"
               :exec (fn []
-                      (select-new-sibling #(deepest-last-child workspace/tree)))})
+                      (select-tree-item (deepest-last-child workspace/tree)))})
 
 (cmd/command {:command ::open-selection
              :desc "Workspace nav: Open selected tree item"
@@ -155,9 +153,15 @@
 (cmd/command {:command ::close-parent
               :desc "Workspace nav: Close parent folder"
               :exec (fn []
-                      (if (= workspace/tree (parent (selected-tree)))
-                        (object/raise (selected-tree) :close!)
-                        (do
-                          (object/raise (parent (selected-tree)) :close!)
-                          (select-new-sibling parent))))})
+                      (let [parent-item (parent (selected-tree))]
+                        (if (= workspace/tree parent-item)
+                          (object/raise (selected-tree) :close!)
+                          (do
+                            (object/raise parent-item :close!)
+                            (select-tree-item parent-item)))))})
+
+(cmd/command {:command ::focus
+              :desc "Workspace nav: Focus on workspace"
+              :exec (fn []
+                      (dom/focus (object/->content workspace/sidebar-workspace)))})
 
