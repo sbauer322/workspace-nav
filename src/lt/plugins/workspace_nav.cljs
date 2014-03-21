@@ -28,7 +28,7 @@
                       (dom/focus (object/->content workspace))))
 
 (defn set-selected-class [tree-item css-class]
-  (let [elem (dom/$ :p (object/->content tree-item))]
+  (let [elem (object/->content tree-item)]
     (dom/remove-class elem "nav-selected-focused")
     (dom/remove-class elem "nav-selected-unfocused")
     (dom/add-class elem css-class)))
