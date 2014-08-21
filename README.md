@@ -9,5 +9,7 @@ Included key mappings for navigation, they're pretty much what you'd expect. As 
 Changes
 =======
 
+0.6:
+ * Select first child when opening a folder (eush77)
 0.5:
  * Make entire LI stylable to behave nicely with other themes (Gozala)
