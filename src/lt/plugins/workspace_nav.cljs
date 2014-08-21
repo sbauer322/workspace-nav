@@ -148,7 +148,9 @@
              :desc "Workspace nav: Open selected tree item"
              :exec (fn []
                      (let [selected (selected-tree)]
-                       (object/raise selected :open!)))})
+                       (object/raise selected :open!)
+                       (if-let [child (first (children selected))]
+                         (select-tree-item child))))})
 
 (cmd/command {:command ::close-parent
               :desc "Workspace nav: Close parent folder"
