@@ -5,11 +5,13 @@ Give the workspace sidebar the ability to be interacted with via the keyboard. M
 
 Included key mappings for navigation, they're pretty much what you'd expect. As well as keymappings that mirror those of NERDTree for VIM.
 
+[NERDTree](https://github.com/scrooloose/nerdtree) for Vim was an inspiration for this plugin.
 
 Changes
 =======
 
 0.6:
- * Select first child when opening a folder (eush77)
+ - Select first child when opening a folder (eush77)
+
 0.5:
- * Make entire LI stylable to behave nicely with other themes (Gozala)
+ - Make entire LI stylable to behave nicely with other themes (Gozala)
