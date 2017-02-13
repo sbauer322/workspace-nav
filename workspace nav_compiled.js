@@ -38,12 +38,14 @@ lt.plugins.workspace_nav.set_selected_class = (function set_selected_class(tree_
 lt.util.dom.remove_class.call(null,elem,"nav-selected-unfocused");
 return lt.util.dom.add_class.call(null,elem,css_class);
 });
-lt.plugins.workspace_nav.__BEH__on_focus_be_interactive = (function __BEH__on_focus_be_interactive(workspace){var tree = lt.objs.sidebar.workspace.tree;lt.objs.context.in_BANG_.call(null,new cljs.core.Keyword(null,"workspace.focused","workspace.focused",1526011536));
+lt.plugins.workspace_nav.__BEH__on_focus_be_interactive = (function __BEH__on_focus_be_interactive(workspace){console.log("on-focus-be-interactive 1");
+var tree = lt.objs.sidebar.workspace.tree;lt.objs.context.in_BANG_.call(null,new cljs.core.Keyword(null,"workspace.focused","workspace.focused",1526011536));
+console.log("in context of :workspace.focused");
 lt.object.update_BANG_.call(null,workspace,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("lt.plugins.workspace-nav","selected","lt.plugins.workspace-nav/selected",1110619727)], null),((function (tree){
-return (function (selected){if(cljs.core.truth_((function (){var and__6352__auto__ = selected;if(cljs.core.truth_(and__6352__auto__))
+return (function (selected){if(cljs.core.truth_((function (){var and__4874__auto__ = selected;if(cljs.core.truth_(and__4874__auto__))
 {return cljs.core.deref.call(null,selected);
 } else
-{return and__6352__auto__;
+{return and__4874__auto__;
 }
 })()))
 {return selected;
@@ -52,69 +54,82 @@ return (function (selected){if(cljs.core.truth_((function (){var and__6352__auto
 }
 });})(tree))
 );
+console.log("on-focus-be-interactive 2");
 lt.plugins.workspace_nav.scroll_to_tree_item.call(null,new cljs.core.Keyword("lt.plugins.workspace-nav","selected","lt.plugins.workspace-nav/selected",1110619727).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,workspace)));
+console.log("on-focus-be-interactive 3");
 return lt.plugins.workspace_nav.set_selected_class.call(null,new cljs.core.Keyword("lt.plugins.workspace-nav","selected","lt.plugins.workspace-nav/selected",1110619727).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,workspace)),"nav-selected-focused");
 });
 lt.object.behavior_STAR_.call(null,new cljs.core.Keyword("lt.plugins.workspace-nav","on-focus-be-interactive","lt.plugins.workspace-nav/on-focus-be-interactive",2233934031),new cljs.core.Keyword(null,"reaction","reaction",4441361819),lt.plugins.workspace_nav.__BEH__on_focus_be_interactive,new cljs.core.Keyword(null,"triggers","triggers",2516997421),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"focus","focus",1111509066),null], null), null));
-lt.plugins.workspace_nav.__BEH__on_blur_context_out = (function __BEH__on_blur_context_out(workspace){lt.plugins.workspace_nav.set_selected_class.call(null,lt.plugins.workspace_nav.selected_tree.call(null),"nav-selected-unfocused");
+lt.plugins.workspace_nav.__BEH__on_blur_context_out = (function __BEH__on_blur_context_out(workspace){console.log("on-blur-context-out 1");
+lt.plugins.workspace_nav.set_selected_class.call(null,lt.plugins.workspace_nav.selected_tree.call(null),"nav-selected-unfocused");
+console.log("on-blur-context-out 2");
+console.log("leaving context of :workspace.focused");
 return lt.objs.context.out_BANG_.call(null,new cljs.core.Keyword(null,"workspace.focused","workspace.focused",1526011536));
 });
 lt.object.behavior_STAR_.call(null,new cljs.core.Keyword("lt.plugins.workspace-nav","on-blur-context-out","lt.plugins.workspace-nav/on-blur-context-out",3483893634),new cljs.core.Keyword(null,"reaction","reaction",4441361819),lt.plugins.workspace_nav.__BEH__on_blur_context_out,new cljs.core.Keyword(null,"triggers","triggers",2516997421),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"blur","blur",1016931289),null], null), null));
 lt.plugins.workspace_nav.__BEH__on_clicked_select = (function __BEH__on_clicked_select(tree_item){return lt.plugins.workspace_nav.select_tree_item.call(null,tree_item);
 });
 lt.object.behavior_STAR_.call(null,new cljs.core.Keyword("lt.plugins.workspace-nav","on-clicked-select","lt.plugins.workspace-nav/on-clicked-select",2908319450),new cljs.core.Keyword(null,"reaction","reaction",4441361819),lt.plugins.workspace_nav.__BEH__on_clicked_select,new cljs.core.Keyword(null,"triggers","triggers",2516997421),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"open!","open!",1119852169),null,new cljs.core.Keyword(null,"close!","close!",3951350939),null], null), null));
-lt.plugins.workspace_nav.children = (function children(parent){return cljs.core.concat.call(null,cljs.core.sort_by.call(null,(function (p1__7839_SHARP_){return clojure.string.lower_case.call(null,lt.objs.files.basename.call(null,new cljs.core.Keyword(null,"path","path",1017337751).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,p1__7839_SHARP_))));
-}),new cljs.core.Keyword(null,"folders","folders",4625622327).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,parent))),cljs.core.sort_by.call(null,(function (p1__7840_SHARP_){return clojure.string.lower_case.call(null,lt.objs.files.basename.call(null,new cljs.core.Keyword(null,"path","path",1017337751).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,p1__7840_SHARP_))));
-}),new cljs.core.Keyword(null,"files","files",1111338473).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,parent))));
+/**
+* For a given directory, `parent`, return the sorted immediate child files and directories.
+*/
+lt.plugins.workspace_nav.children = (function children(parent){return cljs.core.concat.call(null,cljs.core.sort_by.call(null,clojure.string.lower_case.call(null,lt.objs.files.basename.call(null,new cljs.core.Keyword(null,"path","path",1017337751).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,parent)))),new cljs.core.Keyword(null,"folders","folders",4625622327).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,parent))),cljs.core.sort_by.call(null,clojure.string.lower_case.call(null,lt.objs.files.basename.call(null,new cljs.core.Keyword(null,"path","path",1017337751).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,parent)))),new cljs.core.Keyword(null,"files","files",1111338473).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,parent))));
 });
-lt.plugins.workspace_nav.parent = (function parent(tree_item){var or__6364__auto__ = lt.objs.sidebar.workspace.find_by_path.call(null,lt.objs.files.parent.call(null,new cljs.core.Keyword(null,"path","path",1017337751).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,tree_item))));if(cljs.core.truth_(or__6364__auto__))
-{return or__6364__auto__;
+/**
+* Return the parent tree item of `tree-item`, or the root of the workspace.
+*/
+lt.plugins.workspace_nav.parent = (function parent(tree_item){var or__4886__auto__ = lt.objs.sidebar.workspace.find_by_path.call(null,lt.objs.files.parent.call(null,new cljs.core.Keyword(null,"path","path",1017337751).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,tree_item))));if(cljs.core.truth_(or__4886__auto__))
+{return or__4886__auto__;
 } else
 {return lt.objs.sidebar.workspace.tree;
 }
 });
+/**
+* Return the children of the parent of `tree-item`, including `tree-item`.
+*/
 lt.plugins.workspace_nav.siblings = (function siblings(tree_item){return lt.plugins.workspace_nav.children.call(null,lt.plugins.workspace_nav.parent.call(null,tree_item));
 });
-lt.plugins.workspace_nav.prev_sibling = (function prev_sibling(tree_item){return cljs.core.last.call(null,cljs.core.take_while.call(null,(function (p1__7841_SHARP_){return !(cljs.core._EQ_.call(null,tree_item,p1__7841_SHARP_));
+/**
+* Return the sibling immediately before `tree-item`.
+*/
+lt.plugins.workspace_nav.prev_sibling = (function prev_sibling(tree_item){return cljs.core.last.call(null,cljs.core.take_while.call(null,(function (p1__6557_SHARP_){return !(cljs.core._EQ_.call(null,tree_item,p1__6557_SHARP_));
 }),lt.plugins.workspace_nav.siblings.call(null,tree_item)));
 });
-lt.plugins.workspace_nav.next_sibling = (function next_sibling(tree_item){return cljs.core.first.call(null,cljs.core.rest.call(null,cljs.core.drop_while.call(null,(function (p1__7842_SHARP_){return !(cljs.core._EQ_.call(null,tree_item,p1__7842_SHARP_));
+lt.plugins.workspace_nav.next_sibling = (function next_sibling(tree_item){return cljs.core.first.call(null,cljs.core.rest.call(null,cljs.core.drop_while.call(null,(function (p1__6558_SHARP_){return !(cljs.core._EQ_.call(null,tree_item,p1__6558_SHARP_));
 }),lt.plugins.workspace_nav.siblings.call(null,tree_item))));
 });
 lt.plugins.workspace_nav.next_sibling_or_parent_sibling = (function next_sibling_or_parent_sibling(tree_item){while(true){
 if(!(cljs.core._EQ_.call(null,tree_item,lt.objs.sidebar.workspace.tree)))
-{var or__6364__auto__ = lt.plugins.workspace_nav.next_sibling.call(null,tree_item);if(cljs.core.truth_(or__6364__auto__))
-{return or__6364__auto__;
+{var or__4886__auto__ = lt.plugins.workspace_nav.next_sibling.call(null,tree_item);if(cljs.core.truth_(or__4886__auto__))
+{return or__4886__auto__;
 } else
 {{
-var G__7853 = lt.plugins.workspace_nav.parent.call(null,tree_item);
-tree_item = G__7853;
+var G__6559 = lt.plugins.workspace_nav.parent.call(null,tree_item);
+tree_item = G__6559;
 continue;
 }
 }
 } else
-{return null;
+{console.log("ELSE part of next-sibling-or-parent-sibling");
+return null;
 }
 break;
 }
 });
 lt.plugins.workspace_nav.first_tree_item = (function first_tree_item(){return cljs.core.first.call(null,lt.plugins.workspace_nav.children.call(null,lt.objs.sidebar.workspace.tree));
 });
-lt.plugins.workspace_nav.next_tree_item = (function next_tree_item(tree_item){if(cljs.core.truth_(new cljs.core.Keyword(null,"open?","open?",1119852199).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,tree_item))))
-{var or__6364__auto__ = cljs.core.first.call(null,lt.plugins.workspace_nav.children.call(null,tree_item));if(cljs.core.truth_(or__6364__auto__))
-{return or__6364__auto__;
+lt.plugins.workspace_nav.next_tree_item = (function next_tree_item(tree_item){var next_item = (function (){var or__4886__auto__ = cljs.core.first.call(null,lt.plugins.workspace_nav.children.call(null,tree_item));if(cljs.core.truth_(or__4886__auto__))
+{return or__4886__auto__;
 } else
 {return lt.plugins.workspace_nav.next_sibling_or_parent_sibling.call(null,tree_item);
 }
-} else
-{return lt.plugins.workspace_nav.next_sibling_or_parent_sibling.call(null,tree_item);
-}
+})();return next_item;
 });
 lt.plugins.workspace_nav.deepest_last_child = (function deepest_last_child(tree_item){while(true){
 if(cljs.core.truth_(new cljs.core.Keyword(null,"open?","open?",1119852199).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,tree_item))))
 {{
-var G__7854 = cljs.core.last.call(null,lt.plugins.workspace_nav.children.call(null,tree_item));
-tree_item = G__7854;
+var G__6560 = cljs.core.last.call(null,lt.plugins.workspace_nav.children.call(null,tree_item));
+tree_item = G__6560;
 continue;
 }
 } else
@@ -146,29 +161,41 @@ return new_selection;
 }
 }));
 });
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-top","lt.plugins.workspace-nav/navigate-top",3227696769),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Jump to the top of the workspace tree",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.first_tree_item.call(null));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-top","lt.plugins.workspace-nav/navigate-top",3227696769),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Jump to the top of the workspace tree",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("jump to top");
+return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.first_tree_item.call(null));
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-north","lt.plugins.workspace-nav/navigate-north",3241283921),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: navigate up",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.prev_tree_item.call(null,lt.plugins.workspace_nav.selected_tree.call(null)));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-north","lt.plugins.workspace-nav/navigate-north",3241283921),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: navigate up",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("navigating up");
+return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.prev_tree_item.call(null,lt.plugins.workspace_nav.selected_tree.call(null)));
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-south","lt.plugins.workspace-nav/navigate-south",3245575673),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: navigate down",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.next_tree_item.call(null,lt.plugins.workspace_nav.selected_tree.call(null)));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-south","lt.plugins.workspace-nav/navigate-south",3245575673),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: navigate down",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("navigating down");
+return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.next_tree_item.call(null,lt.plugins.workspace_nav.selected_tree.call(null)));
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-bottom","lt.plugins.workspace-nav/navigate-bottom",1635185139),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Jump to the bottom of the workspace tree",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.deepest_last_child.call(null,lt.objs.sidebar.workspace.tree));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","navigate-bottom","lt.plugins.workspace-nav/navigate-bottom",1635185139),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Jump to the bottom of the workspace tree",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("jump to bottom");
+return lt.plugins.workspace_nav.select_tree_item.call(null,lt.plugins.workspace_nav.deepest_last_child.call(null,lt.objs.sidebar.workspace.tree));
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","open-selection","lt.plugins.workspace-nav/open-selection",3511086513),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Open selected tree item",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){var selected = lt.plugins.workspace_nav.selected_tree.call(null);lt.object.raise.call(null,selected,new cljs.core.Keyword(null,"open!","open!",1119852169));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","open-selection","lt.plugins.workspace-nav/open-selection",3511086513),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Open selected tree item",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("opening selected tree item");
+var selected = lt.plugins.workspace_nav.selected_tree.call(null);lt.object.raise.call(null,selected,new cljs.core.Keyword(null,"open!","open!",1119852169));
 var temp__4090__auto__ = cljs.core.first.call(null,lt.plugins.workspace_nav.children.call(null,selected));if(cljs.core.truth_(temp__4090__auto__))
 {var child = temp__4090__auto__;return lt.plugins.workspace_nav.select_tree_item.call(null,child);
 } else
 {return null;
 }
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","close-parent","lt.plugins.workspace-nav/close-parent",1484403147),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Close parent folder",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){var parent_item = lt.plugins.workspace_nav.parent.call(null,lt.plugins.workspace_nav.selected_tree.call(null));if(cljs.core._EQ_.call(null,lt.objs.sidebar.workspace.tree,parent_item))
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","close-parent","lt.plugins.workspace-nav/close-parent",1484403147),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Close parent folder",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("close parent folder");
+var parent_item = lt.plugins.workspace_nav.parent.call(null,lt.plugins.workspace_nav.selected_tree.call(null));if(cljs.core._EQ_.call(null,lt.objs.sidebar.workspace.tree,parent_item))
 {return lt.object.raise.call(null,lt.plugins.workspace_nav.selected_tree.call(null),new cljs.core.Keyword(null,"close!","close!",3951350939));
 } else
 {lt.object.raise.call(null,parent_item,new cljs.core.Keyword(null,"close!","close!",3951350939));
 return lt.plugins.workspace_nav.select_tree_item.call(null,parent_item);
 }
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","focus","lt.plugins.workspace-nav/focus",2163145890),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Focus on workspace",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.util.dom.focus.call(null,lt.object.__GT_content.call(null,lt.objs.sidebar.workspace.sidebar_workspace));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","focus","lt.plugins.workspace-nav/focus",2163145890),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Focus on workspace",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("focusing on workspace");
+return lt.util.dom.focus.call(null,lt.object.__GT_content.call(null,lt.objs.sidebar.workspace.sidebar_workspace));
+})], null));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.workspace-nav","test-plugin","lt.plugins.workspace-nav/test-plugin",4598527132),new cljs.core.Keyword(null,"desc","desc",1016984067),"Workspace nav: Test a thing",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){console.log("plugin testing");
+console.log([cljs.core.str("selected tree item: "),cljs.core.str(cljs.core.deref.call(null,lt.plugins.workspace_nav.selected_tree.call(null)))].join(''));
+console.log([cljs.core.str("next tree item: "),cljs.core.str(cljs.core.deref.call(null,lt.plugins.workspace_nav.next_tree_item.call(null,lt.plugins.workspace_nav.selected_tree.call(null))))].join(''));
+return console.log([cljs.core.str("prev tree item: "),cljs.core.str(cljs.core.deref.call(null,lt.plugins.workspace_nav.prev_tree_item.call(null,lt.plugins.workspace_nav.selected_tree.call(null))))].join(''));
 })], null));
 }
 
