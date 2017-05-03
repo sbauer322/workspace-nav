@@ -10,6 +10,9 @@ Included key mappings for navigation, they're pretty much what you'd expect. As 
 Changes
 =======
 
+0.8:
+ - Fix visual selection
+
 0.7:
  - Switch to MIT license in order to match Light Table
  - Transfer plugin from Beau Fabry to Scott Bauer
